@@ -1,3 +1,5 @@
+from src.application.exceptions import InvalidCommandError
+from src.domain.exceptions import OutOfBoardError
 from src.domain.repositories.board_repository import BoardRepository
 
 class ExecuteInstructionsUseCase:
@@ -16,9 +18,8 @@ class ExecuteInstructionsUseCase:
                 elif instr == "R":
                     board.rotate_robot_right(robot_id=robot_id)
                 else:
-                    raise ValueError(f"Instruction {instr} is not an available movement")
+                    raise InvalidCommandError(f"Instruction {instr} is not an available movement")
             except Exception as e:
-                print(f"Error moving robot {robot_id}: {e}")
                 raise e
         
         self.board_repository.save(board)

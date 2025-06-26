@@ -1,5 +1,6 @@
 import unittest
 from unittest.mock import MagicMock, patch
+from src.application.exceptions import InvalidCommandError
 from src.application.use_cases.execute_instructions import ExecuteInstructionsUseCase
 
 class TestExecuteInstructionsUseCase(unittest.TestCase):
@@ -33,7 +34,7 @@ class TestExecuteInstructionsUseCase(unittest.TestCase):
         self.mock_board_repository.save.assert_called_once_with(self.mock_board)
 
     def test_execute_invalid_instruction_raises(self):
-        with self.assertRaises(ValueError):
+        with self.assertRaises(InvalidCommandError):
             self.use_case.execute(self.robot_id, "MX")
         self.mock_board.move_robot_forward.assert_called_once_with(robot_id=self.robot_id)
         self.mock_board_repository.save.assert_not_called()

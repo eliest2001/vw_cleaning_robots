@@ -6,7 +6,7 @@ class TestRobot(unittest.TestCase):
     def setUp(self):
         self.mock_position = MagicMock()
         self.mock_direction = MagicMock()
-        self.robot = Robot(id="robot1", position=self.mock_position, direction=self.mock_direction)
+        self.robot = Robot( position=self.mock_position, direction=self.mock_direction)
 
     def test_move_forward_updates_position(self):
         new_position = MagicMock()

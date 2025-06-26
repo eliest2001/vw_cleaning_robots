@@ -51,7 +51,7 @@ src/
   domain/          # Entities, Value Objects, Domain exceptions
   application/     # Use cases
   infrastructure/  # Input parser, CLI interface, repositories
-test/           # Unit and integration tests
+test/              # Unit and integration tests
 ```
 ## 🔄 Input Format
 

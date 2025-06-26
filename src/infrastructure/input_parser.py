@@ -2,6 +2,26 @@ from src.infrastructure.exceptions import InputParseError
 
 
 def parse_input(input_data: str):
+    """
+    Parses the input string to extract board dimensions and robot data.
+
+    The input must follow the format:
+        - First line: board dimensions as a string of even length digits (e.g., "55" for 5x5).
+        - Each robot: two lines, first with position and direction (e.g., "12 N"), second with instructions (e.g., "LMLMLMLMM").
+
+    Args:
+        input_data (str): The raw input string.
+
+    Returns:
+        Tuple[int, int, int, List[Tuple[int, int, str, str]]]:
+            - board_coords_len: Number of digits per coordinate.
+            - width: Board width.
+            - height: Board height.
+            - robot_data: List of tuples (x, y, direction, instructions) for each robot.
+
+    Raises:
+        InputParseError: If the input format is invalid or contains invalid values.
+    """
     lines = input_data.strip().splitlines()
     if not lines:
         raise InputParseError("Input is empty")
